@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet,KeyboardAvoidingView } from "react-native";
 import { Context as AuthContext } from "../context/AuthContext";
 import AuthForm from "../components/AuthForm";
 import NavLink from "../components/NavLink";
 
-const SignupScreen = ({ navigation }) => {
+const SignupScreen = () => {
     const { state, signup } = useContext(AuthContext);
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView
+        keyboardVerticalOffset={5}
+        style={styles.container}>
             <AuthForm
                 header="Sign Up for Tracker"
                 errormessage={state.errorMessage}
@@ -19,7 +21,7 @@ const SignupScreen = ({ navigation }) => {
                 routeName="Signin"
                 text="Already have an account? Sign in instead!"
             />
-        </View>
+        </KeyboardAvoidingView>
     );
 };
 
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
-        marginBottom: 200,
+
     },
 });
 
