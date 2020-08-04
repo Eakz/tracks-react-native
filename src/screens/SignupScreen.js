@@ -1,16 +1,18 @@
 import React, { useContext } from "react";
-import { StyleSheet,KeyboardAvoidingView } from "react-native";
+import { StyleSheet, KeyboardAvoidingView } from "react-native";
 import { Context as AuthContext } from "../context/AuthContext";
+import { NavigationEvents } from "react-navigation";
 import AuthForm from "../components/AuthForm";
 import NavLink from "../components/NavLink";
 
 const SignupScreen = () => {
-    const { state, signup } = useContext(AuthContext);
+    const { state, signup, clearErrorMessage } = useContext(AuthContext);
 
     return (
         <KeyboardAvoidingView
-        keyboardVerticalOffset={5}
-        style={styles.container}>
+            keyboardVerticalOffset={5}
+            style={styles.container}>
+            <NavigationEvents onWillFocus={clearErrorMessage} />
             <AuthForm
                 header="Sign Up for Tracker"
                 errormessage={state.errorMessage}
@@ -34,7 +36,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
-
     },
 });
 
