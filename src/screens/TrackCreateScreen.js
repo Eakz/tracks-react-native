@@ -9,9 +9,11 @@ const TrackCreateScreen = () => {
     const [err, setErr] = useState(null);
     const startWatching = async () => {
         try {
-            const granted = await requestPermissionsAsync();
+            const {granted} = await requestPermissionsAsync();
             if (!granted) {
                 throw new Error("I need that doo-doo to do do");
+            }else{
+                setErr(null)
             }
         } catch (e) {
             setErr(e);
