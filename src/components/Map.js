@@ -11,7 +11,6 @@ const Map = () => {
             longitude: -1.223817 + (Math.random()*negPos[Math.floor(Math.random()*2)] * 0.001),
         });
     }
-    }
     return (
         <>
             <MapView
