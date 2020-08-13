@@ -13,6 +13,7 @@ import TrackListScreen from "./src/screens/TrackListScreen";
 import ResolveAuthScreen from "./src/screens/ResolveAuthScreen";
 // Context
 import { Provider as AuthProvider } from "./src/context/AuthContext";
+import { Provider as LocationProvider} from './src/context/LocationContext'
 // Navigation access
 import { setNavigator } from "./src/navigationRef";
 
@@ -36,6 +37,7 @@ const App = createAppContainer(switchNavigator);
 
 export default () => {
     return (
+        <LocationProvider>
         <AuthProvider>
             <App
                 ref={(navigator) => {
@@ -43,5 +45,6 @@ export default () => {
                 }}
             />
         </AuthProvider>
+        </LocationProvider>
     );
 };

@@ -6,16 +6,17 @@ const tenMetersWithDegrees = 0.0001;
 
 const getLocation = (increment) => {
     return {
-        timestamp: 1000000,
-        coors: {
+        timestamp: 1597053957000,
+        coords: {
             speed: 0,
-            heading: 0,
-            accuracy: 5,
+            heading: 90,
+            accuracy: 20,
             altitudeAccuracy: 5,
             altitude: 5,
-            longitude: 52.052141 + increment * tenMetersWithDegrees,
-            latitude: -1.223817 + increment * tenMetersWithDegrees,
+            longitude: -1.221885 + increment * tenMetersWithDegrees,
+            latitude: 52.0502733 + increment * tenMetersWithDegrees,
         },
+        mocked:false
     };
 };
 
