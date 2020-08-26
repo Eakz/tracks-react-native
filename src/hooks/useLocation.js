@@ -5,7 +5,7 @@ import {
     watchPositionAsync,
 } from "expo-location";
 
-export default (callback) => {
+export default (shouldTrack, callback) => {
     const [err, setErr] = useState(null);
     const startWatching = async () => {
         try {
@@ -15,7 +15,7 @@ export default (callback) => {
             } else {
                 setErr(null);
             }
-            await watchPositionAsync(
+            const subscriber = await watchPositionAsync(
                 {
                     accuracy: Accuracy.BestForNavigation,
                     timeInterval: 1000,
