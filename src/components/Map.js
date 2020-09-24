@@ -7,15 +7,18 @@ const Map = () => {
     const {
         state: { currentLocation },
     } = useContext(LocationContext);
-    // let points = [];
-    // const negPos=[1,-1];
+    let points = [];
+    const negPos = [1, -1];
     // for (let i = 0; i < 20; i++) {
     //     points.push({
-    //         latitude: 52.052141 + (Math.random()*negPos[Math.floor(Math.random()*2)] * 0.001),
-    //         longitude: -1.223817 + (Math.random()*negPos[Math.floor(Math.random()*2)] * 0.001),
+    //         latitude:
+    //             52.052141 +
+    //             Math.random() * negPos[Math.floor(Math.random() * 2)] * 0.001,
+    //         longitude:
+    //             -1.223817 +
+    //             Math.random() * negPos[Math.floor(Math.random() * 2)] * 0.001,
     //     });
     // }
-    console.log(currentLocation);
     if (!currentLocation) {
         return <ActivityIndicator size="large" style={{ marginTop: 200 }} />;
     }

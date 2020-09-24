@@ -7,6 +7,7 @@ import {
 
 export default (shouldTrack, callback) => {
     const [err, setErr] = useState(null);
+    const [subscriber, setSubscriber] = useState(null);
     const startWatching = async () => {
         try {
             const { granted } = await requestPermissionsAsync();
@@ -15,20 +16,26 @@ export default (shouldTrack, callback) => {
             } else {
                 setErr(null);
             }
-            const subscriber = await watchPositionAsync(
+            const sub = await watchPositionAsync(
                 {
                     accuracy: Accuracy.BestForNavigation,
                     timeInterval: 1000,
                     distanceInterval: 10,
                 },
-                callback(),
+                callback,
             );
+            setSubscriber(sub);
         } catch (e) {
             setErr(e);
         }
     };
     useEffect(() => {
-        startWatching();
-    }, []);
+        if (shouldTrack) {
+            startWatching();
+        } else {
+            subscriber.remove();
+            setSubscriber(null);
+        }
+    }, [shouldTrack]);
     return [err];
 };
