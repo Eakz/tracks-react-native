@@ -14,6 +14,8 @@ import { Context as LocationContext } from "../context/LocationContext";
 // custom hook
 import useLocation from "../hooks/useLocation";
 
+import { FontAwesome } from "@expo/vector-icons";
+
 const TrackCreateScreen = ({ isFocused }) => {
     const {
         state: { recording },
@@ -36,7 +38,10 @@ const TrackCreateScreen = ({ isFocused }) => {
         </SafeAreaView>
     );
 };
-
+TrackCreateScreen.navigationOptions = {
+    title: "Add Track",
+    tabBarIcon: <FontAwesome name="plus" size={20} />,
+};
 const styles = StyleSheet.create({});
 
 export default withNavigationFocus(TrackCreateScreen);
